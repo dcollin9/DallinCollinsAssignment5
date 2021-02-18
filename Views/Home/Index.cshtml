@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "View Books";
+}
+
+@model IQueryable<Project>
+
+<header>
+    <h4>Here are Professor Hilton's Favorite Books:</h4>
+</header> 
+
+
+<div>
+    <table class="table">
+        <thead class="bg-primary text-white text-center">
+            <tr>
+
+                <th>Title</th>
+                <th>Author First Name</th>
+                <th>Author Middle Name</th>
+                <th>Author Last Name</th>
+                <th>Publisher</th>
+                <th>ISBN</th>
+                <th>Classification</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+            
+        </thead>
+
+        <tbody>
+            @foreach (var x in Model)
+            {
+            <tr>
+                <td>@x.Title</td>
+                <td>@x.AuthorFirstName</td>
+                <td>@x.AuthorMiddleName</td>
+                <td>@x.AuthorLastName</td>
+                <td>@x.Publisher</td>
+                <td>@x.ISBN</td>
+                <td>@x.Classification</td>
+                <td>@x.Category</td>
+                <td>@x.Price</td>
+
+            </tr>
+            }
+            </tbody>
+    </table>
+
+
+</div>
+
