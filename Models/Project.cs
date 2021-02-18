@@ -8,6 +8,8 @@ namespace DallinCollinsAssignment5.Models
 {
     public class Project
     {
+
+        //declaring the different fields of the model
         [Key]
         public int BookId { get; set; }
 
@@ -17,7 +19,7 @@ namespace DallinCollinsAssignment5.Models
         [Required]
         public string AuthorFirstName { get; set; }
 
-        
+        //the middle name isn't required because some authors have no middle name
         public string AuthorMiddleName { get; set; }
 
         [Required]
@@ -27,7 +29,7 @@ namespace DallinCollinsAssignment5.Models
         public string Publisher { get; set; }
 
         [Required]
-        [RegularExpression("^[0-9]{3}-[0-9]{10}$")]
+        [RegularExpression("^[0-9]{3}-[0-9]{10}$")] //ensures data is in the same ISBN format as is the original data
         public string ISBN { get; set; }
 
         [Required]

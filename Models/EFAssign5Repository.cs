@@ -9,7 +9,7 @@ namespace DallinCollinsAssignment5.Models
     {
         private Assignment5DBContext _context;
 
-        //my constructor
+        //constructor to give the private variable a value
         public EFAssign5Repository (Assignment5DBContext context)
         {
             _context = context;

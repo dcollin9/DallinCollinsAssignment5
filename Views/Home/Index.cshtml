@@ -2,6 +2,7 @@
     ViewBag.Title = "View Books";
 }
 
+<!--Brings in an IQueryable model that takes from Project.cs-->
 @model IQueryable<Project>
 
 <header>
@@ -28,6 +29,8 @@
         </thead>
 
         <tbody>
+
+            <!--Iterates through the list of Projects to populate the table-->
             @foreach (var x in Model)
             {
             <tr>

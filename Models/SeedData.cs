@@ -26,6 +26,8 @@ namespace DallinCollinsAssignment5.Models
             if(!context.Projects.Any())
             {
                 context.Projects.AddRange(
+
+                    //adds information for different books
                     new Project
                     {
                         Title = "Les Miserables",
