@@ -58,8 +58,12 @@ namespace DallinCollinsAssignment5
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                   "pagination",
+                   "P{page}",
+                   new { Controller = "Home", action = "Index" });
+
+                endpoints.MapDefaultControllerRoute();
+
             });
 
             //don't need this after initial run

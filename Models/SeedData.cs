@@ -164,6 +164,45 @@ namespace DallinCollinsAssignment5.Models
                         Category = "Thrillers",
                         Price = "$15.03",
                         PageCount = 642
+                    },
+                    new Project
+                    {
+                        Title = "How to Win Friends and Influence People",
+                        AuthorFirstName = "Dale",
+                        AuthorMiddleName = null,
+                        AuthorLastName = "Carnegie",
+                        Publisher = "Pocket Books",
+                        ISBN = "978-0671027032",
+                        Classification = "Non-Fiction",
+                        Category = "Self-Help",
+                        Price = "$11.85",
+                        PageCount = 288
+                    },
+                    new Project
+                    {
+                        Title = "Harry Potter and the Deathly Hallows",
+                        AuthorFirstName = "Joanne",
+                        AuthorMiddleName = "Kathleen",
+                        AuthorLastName = "Rowling",
+                        Publisher = "Arthur A. Levine Books",
+                        ISBN = "978-0545139700",
+                        Classification = "Fiction",
+                        Category = "Thriller",
+                        Price = "$10.49",
+                        PageCount = 784
+                    },
+                    new Project
+                    {
+                        Title = "Leadership and Self-Deception: Getting Out of the Box",
+                        AuthorFirstName = "Arbinger Institute",
+                        AuthorMiddleName = null,
+                        AuthorLastName = "N/A",
+                        Publisher = "Berrett-Koehler Publishers",
+                        ISBN = "978-1576759776",
+                        Classification = "Fiction",
+                        Category = "Self-Help",
+                        Price = "$23.74",
+                        PageCount = 240
                     }
 
 

@@ -34,6 +34,12 @@ namespace DallinCollinsAssignment5.Infrastructure
 
         public string PageAction { get; set; }
 
+        public bool PageClassesEnabled { get; set; } = false;
+        public string PageClass { get; set; }
+
+        public string PageClassNormal { get; set; }
+        public string PageClassSelected { get; set; }
+
 
         //need to override a method that is in the TagHelper class
         //means we take a method already in place and replace it with our information
@@ -53,6 +59,14 @@ namespace DallinCollinsAssignment5.Infrastructure
 
                 //adds href to the a tag. Looks at the action being passed (index, privacy, etc)
                 tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+
+                if (PageClassesEnabled)
+                {
+                    tag.AddCssClass(PageClass);
+
+                    //if i is equal to PageModel.CurrentPage, then do PageClassSelected. Otherwise, do PageClassNormal
+                    tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+                }
 
                 //appends what number we're on to the html tag
                 tag.InnerHtml.Append(i.ToString());

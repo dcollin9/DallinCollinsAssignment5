@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DallinCollinsAssignment5.Migrations
 {
     [DbContext(typeof(Assignment5DBContext))]
-    [Migration("20210224173447_Initial")]
+    [Migration("20210225022653_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

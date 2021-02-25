@@ -5,54 +5,32 @@
 <!--Brings in the project list view model for this specific view-->
 @model ProjectListViewModel
 
-<header>
-    <h4>Here are Professor Hilton's Favorite Books:</h4>
-</header> 
+
+@foreach (var x in Model.Projects)
+{
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-faded p-1">
+            <h4>
+                Title: @x.Title 
+            </h4>
+            <p class="lead">Publisher: @x.Publisher</p>
+            <p><span role="button" tabindex="0">Author First Name: @x.AuthorFirstName</span></p>
+            <p>Author Middle Name: @x.AuthorMiddleName</p>
+            <p>Author Last Name: @x.AuthorLastName</p>
+            <p>ISBN: @x.ISBN</p>
+            <p>Classification: @x.Classification</p>
+            <p>Category: @x.Category</p>
+            <p>Price: @x.Price</p>
+            <p>Number of Pages: @x.PageCount</p>
+        </div>
+    </div>
+}
 
 
-<div>
-    <table class="table">
-        <thead class="bg-primary text-white text-center">
-            <tr>
-
-                <th>Title</th>
-                <th>Author First Name</th>
-                <th>Author Middle Name</th>
-                <th>Author Last Name</th>
-                <th>Publisher</th>
-                <th>ISBN</th>
-                <th>Classification</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Number of Pages</th>
-            </tr>
-            
-        </thead>
-
-        <tbody>
-             
-            <!--Iterates through the list of Projects to populate the table-->
-            @foreach (var x in Model.Projects) //model.projects tells the program 
-            {
-            <tr>
-                <td>@x.Title</td>
-                <td>@x.AuthorFirstName</td>
-                <td>@x.AuthorMiddleName</td>
-                <td>@x.AuthorLastName</td>
-                <td>@x.Publisher</td>
-                <td>@x.ISBN</td>
-                <td>@x.Classification</td>
-                <td>@x.Category</td>
-                <td>@x.Price</td>
-                <td>@x.PageCount</td>
-
-            </tr>
-            }
-            </tbody>
-    </table>
-
-
-</div>
+    
 <!--Tells the div to go pass the PagingInfo template to the page-model-->
-<div page-model="@Model.PagingInfo" page-action="Index" class="text-center"></div>
+<div page-model="@Model.PagingInfo" page-action="Index" 
+     page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" 
+     class="btn-group pull-right m-1"></div>
 
