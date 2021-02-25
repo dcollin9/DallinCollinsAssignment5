@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using DallinCollinsAssignment5.Models.ViewModels;
 
 namespace DallinCollinsAssignment5.Controllers
 {
@@ -14,6 +15,9 @@ namespace DallinCollinsAssignment5.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private Assign5Repository _repository;
+
+        //number of items per page
+        public int PageSize = 5;
 
 
 
@@ -25,10 +29,34 @@ namespace DallinCollinsAssignment5.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index()
+        //if nothing else has been passed into the page variable, pass a 1 as the default
+        public IActionResult Index(int page = 1) 
         {
-            
-            return View(_repository.Projects);
+
+            return View(new ProjectListViewModel
+            {
+                //this is what will be returned to the view
+
+                //go into Projects, and set it equal to the _repository Projects
+                Projects = _repository.Projects
+                .OrderBy(p => p.BookId)
+                .Skip((page - 1) * PageSize) //supposing a 2 was passed in,  it skips out to element 5 of the array
+                .Take(PageSize) //takes the items per page (5) starting at what it was skipped to
+               ,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+
+                    //grabs number of items from the project at runtime
+                    TotalNumItems = _repository.Projects.Count()
+                }
+        });
+                
+
+
+               
+                
         }
 
         public IActionResult Privacy()

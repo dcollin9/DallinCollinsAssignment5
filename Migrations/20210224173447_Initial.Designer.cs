@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DallinCollinsAssignment5.Migrations
 {
     [DbContext(typeof(Assignment5DBContext))]
-    [Migration("20210218015405_Initial")]
+    [Migration("20210224173447_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,9 @@ namespace DallinCollinsAssignment5.Migrations
                     b.Property<string>("ISBN")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PageCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("Price")
                         .IsRequired()

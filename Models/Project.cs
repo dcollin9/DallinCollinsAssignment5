@@ -40,5 +40,8 @@ namespace DallinCollinsAssignment5.Models
 
         [Required]
         public string Price { get; set; }
+
+        [Required]
+        public int PageCount { get; set; }
     }
 }

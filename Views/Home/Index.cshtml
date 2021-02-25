@@ -2,8 +2,8 @@
     ViewBag.Title = "View Books";
 }
 
-<!--Brings in an IQueryable model that takes from Project.cs-->
-@model IQueryable<Project>
+<!--Brings in the project list view model for this specific view-->
+@model ProjectListViewModel
 
 <header>
     <h4>Here are Professor Hilton's Favorite Books:</h4>
@@ -24,6 +24,7 @@
                 <th>Classification</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th>Number of Pages</th>
             </tr>
             
         </thead>
@@ -31,7 +32,7 @@
         <tbody>
              
             <!--Iterates through the list of Projects to populate the table-->
-            @foreach (var x in Model)
+            @foreach (var x in Model.Projects) //model.projects tells the program 
             {
             <tr>
                 <td>@x.Title</td>
@@ -43,6 +44,7 @@
                 <td>@x.Classification</td>
                 <td>@x.Category</td>
                 <td>@x.Price</td>
+                <td>@x.PageCount</td>
 
             </tr>
             }
@@ -51,4 +53,6 @@
 
 
 </div>
+<!--Tells the div to go pass the PagingInfo template to the page-model-->
+<div page-model="@Model.PagingInfo" page-action="Index" class="text-center"></div>
 
