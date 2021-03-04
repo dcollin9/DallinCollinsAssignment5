@@ -58,10 +58,12 @@ namespace DallinCollinsAssignment5
             app.UseEndpoints(endpoints =>
             {
 
+
+
                 //if the user passes a category and a page
+                //gets the category first, then the page
                 endpoints.MapControllerRoute("catpage",
-                    //gets the category first, then the page
-                    "{category}/{ page:int}",
+                    "{category}/{page:int}",
                     new { Controller = "Home", action = "Index" }
                     );
 
@@ -71,12 +73,13 @@ namespace DallinCollinsAssignment5
                    new { Controller = "Home", action = "Index" }
                     );
 
-
+                //should go third
                 //user gives us only a category
                 endpoints.MapControllerRoute("category",
                     "{category}",
-                    new {Controller = "Home", action = "Index", page = 1}
+                    new { Controller = "Home", action = "Index", page = 1 }
                     );
+
 
                 endpoints.MapControllerRoute(
                    "pagination",
@@ -88,7 +91,7 @@ namespace DallinCollinsAssignment5
             });
 
             //don't need this after initial run
-           SeedData.EnsurePopulated(app);
+          // SeedData.EnsurePopulated(app);
         }
     }
 }

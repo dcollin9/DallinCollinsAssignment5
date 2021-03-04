@@ -49,8 +49,9 @@ namespace DallinCollinsAssignment5.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
 
-                    //grabs number of items from the project at runtime
-                    TotalNumItems = _repository.Projects.Count()
+                    //grabs number of items from the project at runtime (or the number of books in a category)
+                    TotalNumItems = category == null ?_repository.Projects.Count() :
+                        _repository.Projects.Where(x => x.Category == category).Count()
                 },
 
                 CurrentCategory = category

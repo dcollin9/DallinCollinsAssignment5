@@ -13,9 +13,25 @@ namespace DallinCollinsAssignment5.Components
 
         private Assign5Repository repository;
 
-        public string Invoke()
+        public NavigationMenuViewComponent (Assign5Repository r)
         {
-            return "This worked";
+            repository = r;
+        }
+
+        public IViewComponentResult Invoke()
+        {
+
+            //grabs the value of the current page to pass to the Default.cshtml
+            ViewBag.SelectedCategory = RouteData?.Values["category"];
+
+
+            //returns a list of categories with no repeats
+            return View(repository.Projects
+                .Select(x => x.Category)
+                .Distinct()
+                .OrderBy(x => x)
+                );
+
         }
     }
 }
