@@ -14,6 +14,7 @@ namespace DallinCollinsAssignment5.Models.ViewModels
         public PagingInfo PagingInfo { get; set; }
 
 
+        //keeps track of current category
         public string CurrentCategory { get; set; }
     }
 }

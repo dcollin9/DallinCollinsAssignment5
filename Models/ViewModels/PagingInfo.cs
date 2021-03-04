@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace DallinCollinsAssignment5.Models.ViewModels
 {
+
+    //sets info for the paging information
     public class PagingInfo
     {
         public int TotalNumItems { get; set; }

@@ -12,7 +12,9 @@ namespace DallinCollinsAssignment5.Components
     {
 
         private Assign5Repository repository;
+        
 
+        //constructor to assign value of private variable
         public NavigationMenuViewComponent (Assign5Repository r)
         {
             repository = r;
