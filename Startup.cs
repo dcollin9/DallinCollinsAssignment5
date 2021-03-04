@@ -57,6 +57,27 @@ namespace DallinCollinsAssignment5
 
             app.UseEndpoints(endpoints =>
             {
+
+                //if the user passes a category and a page
+                endpoints.MapControllerRoute("catpage",
+                    //gets the category first, then the page
+                    "{category}/{ page:int}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                //if the user just gives you a page number
+                endpoints.MapControllerRoute("page",
+                    "{page:int}",
+                   new { Controller = "Home", action = "Index" }
+                    );
+
+
+                //user gives us only a category
+                endpoints.MapControllerRoute("category",
+                    "{category}",
+                    new {Controller = "Home", action = "Index", page = 1}
+                    );
+
                 endpoints.MapControllerRoute(
                    "pagination",
                    "P{page}",

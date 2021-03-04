@@ -34,6 +34,12 @@ namespace DallinCollinsAssignment5.Infrastructure
 
         public string PageAction { get; set; }
 
+
+        [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
+        public Dictionary<string, object> PageUrlValues { get; set; } = new Dictionary<string, object>();
+
+
+
         public bool PageClassesEnabled { get; set; } = false;
         public string PageClass { get; set; }
 
@@ -57,8 +63,10 @@ namespace DallinCollinsAssignment5.Infrastructure
                 //adds an a tag
                 TagBuilder tag = new TagBuilder("a");
 
+                PageUrlValues["page"] = i;
+
                 //adds href to the a tag. Looks at the action being passed (index, privacy, etc)
-                tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+                tag.Attributes["href"] = urlHelper.Action(PageAction, PageUrlValues);
 
                 if (PageClassesEnabled)
                 {

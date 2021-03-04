@@ -30,7 +30,7 @@ namespace DallinCollinsAssignment5.Controllers
         }
 
         //if nothing else has been passed into the page variable, pass a 1 as the default
-        public IActionResult Index(int page = 1) 
+        public IActionResult Index(string category, int page = 1) 
         {
 
             return View(new ProjectListViewModel
@@ -39,6 +39,7 @@ namespace DallinCollinsAssignment5.Controllers
 
                 //go into Projects, and set it equal to the _repository Projects
                 Projects = _repository.Projects
+                .Where(p => category == null || p.Category == category)
                 .OrderBy(p => p.BookId)
                 .Skip((page - 1) * PageSize) //supposing a 2 was passed in,  it skips out to element 5 of the array
                 .Take(PageSize) //takes the items per page (5) starting at what it was skipped to
@@ -50,7 +51,9 @@ namespace DallinCollinsAssignment5.Controllers
 
                     //grabs number of items from the project at runtime
                     TotalNumItems = _repository.Projects.Count()
-                }
+                },
+
+                CurrentCategory = category
         });
                 
 

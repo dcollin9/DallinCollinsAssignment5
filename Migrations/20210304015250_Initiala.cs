@@ -2,7 +2,7 @@
 
 namespace DallinCollinsAssignment5.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Initiala : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

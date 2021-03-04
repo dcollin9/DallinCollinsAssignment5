@@ -187,7 +187,7 @@ namespace DallinCollinsAssignment5.Models
                         Publisher = "Arthur A. Levine Books",
                         ISBN = "978-0545139700",
                         Classification = "Fiction",
-                        Category = "Thriller",
+                        Category = "Thrillers",
                         Price = "$10.49",
                         PageCount = 784
                     },
