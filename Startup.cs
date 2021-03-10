@@ -29,10 +29,16 @@ namespace DallinCollinsAssignment5
 
             services.AddDbContext<Assignment5DBContext>(options =>
            {
-               options.UseSqlServer(Configuration["ConnectionStrings:Assignment5Connection"]);
+               options.UseSqlite(Configuration["ConnectionStrings:Assignment5Connection"]);
            });
 
             services.AddScoped<Assign5Repository, EFAssign5Repository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +56,8 @@ namespace DallinCollinsAssignment5
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
@@ -88,10 +96,12 @@ namespace DallinCollinsAssignment5
 
                 endpoints.MapDefaultControllerRoute();
 
+                endpoints.MapRazorPages();
+
             });
 
             //don't need this after initial run
-          // SeedData.EnsurePopulated(app);
+          SeedData.EnsurePopulated(app);
         }
     }
 }
