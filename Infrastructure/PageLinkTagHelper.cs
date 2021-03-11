@@ -63,7 +63,7 @@ namespace DallinCollinsAssignment5.Infrastructure
                 //adds an a tag
                 TagBuilder tag = new TagBuilder("a");
 
-                PageUrlValues["page"] = i;
+                PageUrlValues["pageNum"] = i;
 
                 //adds href to the a tag. Looks at the action being passed (index, privacy, etc)
                 tag.Attributes["href"] = urlHelper.Action(PageAction, PageUrlValues);

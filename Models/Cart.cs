@@ -10,7 +10,7 @@ namespace DallinCollinsAssignment5.Models
 
         public List<CartLine> Lines { get; set; } = new List<CartLine>();
 
-        public void AddItem (Project proj, int qty)
+        public virtual void AddItem (Project proj, int qty)
         {
 
             //looks at the list and sees if the book id in the list matches the book id is passed in
@@ -38,11 +38,13 @@ namespace DallinCollinsAssignment5.Models
         }
 
         //goes to lines and removes all that match
-        public void RemoveLine(Project proj) =>
+        public virtual void RemoveLine(Project proj) =>
             Lines.RemoveAll(x => x.Project.BookId == proj.BookId); //returns a true or a false based on where the bookId matches the bookId passed in
 
-        public void Clear() => Lines.Clear();
+        //clears the entire list
+        public virtual void Clear() => Lines.Clear();
 
+        //calculates the sum
         public decimal ComputeTotalSum() =>
             (decimal)Lines.Sum(e => e.Project.Price * e.Quantity); //returns this line
         

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DallinCollinsAssignment5.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace DallinCollinsAssignment5
 {
@@ -39,6 +40,10 @@ namespace DallinCollinsAssignment5
             services.AddDistributedMemoryCache();
 
             services.AddSession();
+
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,13 +76,13 @@ namespace DallinCollinsAssignment5
                 //if the user passes a category and a page
                 //gets the category first, then the page
                 endpoints.MapControllerRoute("catpage",
-                    "{category}/{page:int}",
+                    "{category}/{pageNum:int}",
                     new { Controller = "Home", action = "Index" }
                     );
 
                 //if the user just gives you a page number
                 endpoints.MapControllerRoute("page",
-                    "{page:int}",
+                    "{pageNum:int}",
                    new { Controller = "Home", action = "Index" }
                     );
 
@@ -85,13 +90,13 @@ namespace DallinCollinsAssignment5
                 //user gives us only a category
                 endpoints.MapControllerRoute("category",
                     "{category}",
-                    new { Controller = "Home", action = "Index", page = 1 }
+                    new { Controller = "Home", action = "Index", pageNum = 1 }
                     );
 
 
                 endpoints.MapControllerRoute(
                    "pagination",
-                   "P{page}",
+                   "P{pageNum}",
                    new { Controller = "Home", action = "Index" });
 
                 endpoints.MapDefaultControllerRoute();
