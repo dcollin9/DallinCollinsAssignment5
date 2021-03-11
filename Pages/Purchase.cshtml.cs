@@ -31,7 +31,6 @@ namespace DallinCollinsAssignment5.Pages
         {
             //if it's null, return the slash
             ReturnUrl = returnUrl ?? "/";
-            //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
         }
 
         //user is submitting something
@@ -40,17 +39,17 @@ namespace DallinCollinsAssignment5.Pages
             //looks at the repository, and the first thing that comes up when bookid = bookid
             Project project = repository.Projects.FirstOrDefault(p => p.BookId == bookId);
 
-           //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
 
             //add an item to that cart, then add one
             Cart.AddItem(project, 1);
 
             //update the cart
-           // HttpContext.Session.SetJson("cart", Cart);
 
             return RedirectToPage(new { returnUrl = returnUrl });
         }
 
+
+        //locates the item in the cart and then removes it
         public IActionResult OnPostRemove(long bookId, string returnUrl)
         {
             Cart.RemoveLine(Cart.Lines.First(cl =>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DallinCollinsAssignment5.Models
 {
+    //subclasses the Cart class and overrides the AddItem, RemoveLine, and Clear methods so that they call the base implementations and then store the updated state in the sesson
     public class SessionCart : Cart
     {
         public static Cart GetCart(IServiceProvider services)

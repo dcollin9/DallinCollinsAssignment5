@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DallinCollinsAssignment5.Views.Shared.Components
 {
+
+    //receives a Cart object as a constructor argument, and passses on the Cart to the view method to help generate the necessary html
     public class CartSummaryViewComponent : ViewComponent
     {
         private Cart cart;
